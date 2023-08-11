@@ -1,4 +1,4 @@
-# Sunny & Gertude
+# Sunny & Gertrude
 A MVP ecommerce web app
 
 Authors:

@@ -39,3 +39,61 @@ navToggle.addEventListener("click", ()=> {
     navToggle.setAttribute("aria-expanded", false);
   }
 });
+
+// BACKGROUND BLUR ON CLICK + OVERFLOW FIX
+function toggle() {
+  var blur = document.getElementById('blur');
+  blur.classList.toggle("active")
+}
+
+// function lockScroll() {
+//   if ($('body').hasClass('lock-scroll')) {
+//       $('body').removeClass('lock-scroll');
+//   } else {
+//       $('body').addClass('lock-scroll');
+//   }
+// };
+
+function disableScrolling(){
+  var x=window.scrollX;
+  var y=window.scrollY;
+  window.onscroll=function(){window.scrollTo(x, y);};
+}
+
+function enableScrolling(){
+  window.onscroll=function(){};
+}
+
+
+// CAROUSEL SLIDER
+var swiper = new Swiper(".mySwiper", {
+    slidesPerView: 1,
+    spaceBetween: 0,
+    loop: true,
+    autoplay: {
+        delay: 7000,
+        disableOnInteraction: false,
+    },
+    navigation: {
+      nextEl: ".swiper-button-next",
+      prevEl: ".swiper-button-prev",
+    },
+  });
+
+  //NEW ARRIVALS & BESTSELLER TABS
+  const tabs= document.querySelectorAll('.tab-btn');
+  const all_content= document.querySelectorAll('.content2');
+
+  tabs.forEach((tab, index)=>{
+    tab.addEventListener('click', (e)=>{
+      tabs.forEach(tab=>{tab.classList.remove('active')}); 
+      tab.classList.add('active');
+
+      var line=document.querySelector('.line');
+      line.style.width = e.target.offsetWidth + "px";
+      line.style.left = e.target.offsetLeft + "px";
+
+      all_content.forEach(content=>{content.classList.remove('active')});
+      all_content[index].classList.add('active');
+    })
+  })
